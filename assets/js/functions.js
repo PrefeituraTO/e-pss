@@ -79,7 +79,7 @@ function formatacpf(c){
     }
 }
 
-function validaForm(){
+function validaCadastro(){
     cont=0
     if(document.getElementById("nome").value.length<5){
         document.getElementById("nome").style="border: solid 1px #ff0000"
@@ -132,9 +132,10 @@ function validaForm(){
 
     if(document.getElementById("numero").value.length<1){
         document.getElementById("numero").style="border: solid 1px #ff0000"
+        cont++
     }else{
         document.getElementById("numero").style="border: solid 1px #dddddd"
-        cont++	
+
     }
 
     if(document.getElementById("bairro").value.length<3){
@@ -187,4 +188,17 @@ function validaForm(){
    }
 }
 
-
+function validaInscricao(){
+    cont=0
+    cargos.forEach(
+        function validaInsc(id){
+           if(document.getElementById(id).checked==true) cont++
+	}
+    )
+    if(cont == 0){
+   	alert("Você deve selecionar pelo menos um cargo")
+        return false
+    }else{
+        return true
+    }
+}
