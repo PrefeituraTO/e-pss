@@ -182,7 +182,7 @@
     </div>
 
     <div class="form-group">
-     <input type="submit" class="btn btn-primary" value="Enviar" onclick="if(validaForm()) submit(); else return false " onsubmit="if(validaForm()) submit(); else return false " />
+     <input type="submit" class="btn btn-primary" value="Enviar" onclick="if(validaCadastro()) submit(); else return false " onsubmit="if(validaCadastro()) submit(); else return false " />
     </div>
 
    </form>

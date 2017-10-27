@@ -37,6 +37,7 @@ function ifLogin(){
 function getCargos(){
 	$PDO=conecta();
 	$k=0;
+	$cargos="[";
 	$SQL="SELECT * FROM cargo";
 	$SQL2="SELECT * FROM inscricao WHERE idPessoa=".$_SESSION['PSS']['id'];
 	if($result = $PDO->query($SQL)){
@@ -45,9 +46,11 @@ function getCargos(){
 		for ($i=0;$i<sizeof($rows);$i++){
 			$k++;
 			echo "     <li><input type=\"checkbox\" id=\"cargo".$rows[$i]['id']."\" name=\"cargo".$k."\" value=\"".$rows[$i]['id']."\"> ".utf8_encode($rows[$i]['cargo'])."</li>"."\n";
+			$cargos.="'cargo".$rows[$i]['id']."', ";
 		}
 		echo "    </ul>"."\n";
-			echo "    <input type=\"hidden\" name=\"quant\" value=\"".$k."\" />"."\n";
+		$cargos.="]";
+		echo "    <input type=\"hidden\" name=\"quant\" value=\"".$k."\" />"."\n";
 	}
 	if($result2=$PDO->query($SQL2)){
 		$rows2=$result2->fetchAll();
@@ -55,6 +58,7 @@ function getCargos(){
 		for($j=0;$j<sizeof($rows2);$j++){
 			echo "     document.getElementById('cargo".$rows2[$j]['id']."').checked=true;"."\n";
 		}
+		echo "var cargos = ".$cargos;
 		echo "    </script>"."\n";
 	}
 }
