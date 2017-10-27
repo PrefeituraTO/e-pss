@@ -174,15 +174,15 @@
     </div>
 
     <div class="form-group">
-     <label class="sr-only" for="Confirmar">Confirmar</label>
+     <label class="sr-only" for="confirmar">Confirmar</label>
      <div class="input-group">
       <div class="input-group-addon">Confirmar</div>
-      <input type="password" class="form-control" id="Confirmar" name="Confirmar" />
+      <input type="password" class="form-control" id="confirmar" name="confirmar" />
      </div>
     </div>
 
     <div class="form-group">
-     <input type="submit" class="btn btn-primary" value="Enviar"/>
+     <input type="submit" class="btn btn-primary" value="Enviar" onclick="if(validaForm()) submit(); else return false " onsubmit="if(validaForm()) submit(); else return false " />
     </div>
 
    </form>
