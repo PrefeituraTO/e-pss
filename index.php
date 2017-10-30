@@ -23,6 +23,7 @@
 
 		switch($P){
 			case "acesso":		include("views/acesso.php");		break;
+			case "listar":		include("views/listar.php");		break;
 			default:		include("views/cadastro.php");		break;
 		}
 	}

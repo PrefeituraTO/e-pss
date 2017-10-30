@@ -10,6 +10,5 @@
   <link href="/assets/css/bootstrap.css" rel="stylesheet">
   <link href="/assets/css/print.css" rel="stylesheet">
   <link href="/assets/css/style.css" rel="stylesheet">
-  <script src="/assets/js/functions.js"></script>
  </head>
  <body>

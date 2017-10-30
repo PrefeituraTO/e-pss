@@ -16,6 +16,10 @@ function getHora($var){
 	return date('H:i',strtotime($var));
 }
 
+function getDataHora($var){
+	return date('d/m/Y H:i',strtotime($var));
+}
+
 function conecta(){
 	try{
 		return new PDO( "mysql:host=".@getenv(BDHOST).";dbname=".@getenv(BDNAME),@getenv(BDUSER),@getenv(BDPASS));
@@ -192,6 +196,31 @@ function sendMail($mail,$subject,$body){
 	if(mail($mail,$subject,$body,$header))	return true;
 	else					return false;
 	
+}
+
+function listar(){
+	$PDO=conecta();
+	$SQL1="SELECT * FROM pessoa ORDER BY Nome;";
+	if($result1=$PDO->query($SQL1)){
+		echo " <table class=\"table-striped border container\">"."\n";
+		$rows1=$result1->fetchAll();
+		for ($i=0;$i<sizeof($rows1);$i++){
+			$SQL2="SELECT i.id AS id, i.idCargo AS idc, i.datahora AS datahora, c.cargo AS cargo FROM inscricao AS i, cargo AS c WHERE i.idPessoa=".$rows1[$i]['id']." AND i.idCargo=c.id ";
+			echo "     <tr><td><b>CPF: ".$rows1[$i]['cpf']."</b></td><td><b>Candidato:</b> ".$rows1[$i]['nome']."</td>";
+			if($result2=$PDO->query($SQL2)){
+				$rows2=$result2->fetchAll();
+				echo "<td><b>Horário: </b>".@getDataHora($rows2[0]['datahora'])."</td></tr>";
+				for($j=0;$j<sizeof($rows2);$j++){
+					echo "     <tr><td><b>Inscrição: </b>".$rows2[$j]['id']."</td><td colspan=\"2\"><b>cargo: </b>".utf8_encode($rows2[$j]['cargo'])."</td></tr>"."\n";
+				}
+					echo "     <tr><td colspan=\"3\"><hr></td></tr>"."\n";
+			}
+
+		}
+		echo "   </table>"."\n";
+
+	}
+
 }
 
 ?>
