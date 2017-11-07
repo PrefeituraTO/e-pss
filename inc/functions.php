@@ -136,11 +136,15 @@ function calculaAtendimento(){
 function Agendamento($ID){
 	$PDO=conecta();
 	$SQL1="SELECT * FROM inscricao WHERE idPessoa=".$ID;
+	$insc="    <p>Além dos documentos listados abaixo, é importante lembrar de levar o formulário localizado no 'Anexo V' do <a href=\"#\">Edital</a> devidamente preenchido.</p>"."\n";
 	if($result1=$PDO->query($SQL1)){
 		$rows1=$result1->fetchAll();
-		$insc="    <table class=\"table-striped border container\">"."\n";
+		$insc.="    <table class=\"table-striped border container\">"."\n";
 		$insc.="     <tr>"."\n";
 		$insc.="      <td class=\"border\" colspan=\"3\"><b>Nome: </b>".$_SESSION['PSS']['nome']."</td>"."\n";
+		$insc.="     </tr>"."\n";
+		$insc.="     <tr>"."\n";
+		$insc.="      <td class=\"border\" colspan=\"3\"><b>Local: Praça de Esportes, situada à Rua Sebastião Ramos, sem número - Bairro Grão Pará, Teófilo Otoni/MG</b></td>"."\n";
 		$insc.="     </tr>"."\n";
 		$insc.="     <tr>"."\n";
 		$insc.="      <td class=\"border\" colspan=\"3\">"."\n";
