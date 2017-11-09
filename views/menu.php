@@ -9,7 +9,7 @@
     </ul>
 <?php if(ifLogin()){ ?>
     <ul class="navbar-nav">
-     <li class="nav-item" style="color:#FFFFFF; padding:10px 10px 0 0 "><?php echo $_SESSION['PSS']['nome']." -".$_SESSION['PSS']['id']?></li>
+     <li class="nav-item" style="color:#FFFFFF; padding:10px 10px 0 0 "><?php echo $_SESSION['PSS']['nome']?></li>
      <li class="nav-item"><a href="inc/logoff.php" ><button class="btn btn-outline-danger my-2 my-sm-0">Sair</button></a></li>
     </ul>
 <?php }else{ ?>

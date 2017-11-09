@@ -64,6 +64,7 @@
        <option value="">Escolha</option>
        <option value="F">Feminino</option>
        <option value="M">Masculino</option>
+       <option value="O">Outro(a)</option>
       </select>
      </div>
     </div>
