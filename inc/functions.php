@@ -60,9 +60,9 @@ function getCargos(){
 		$rows2=$result2->fetchAll();
 		echo "    <script>"."\n";
 		for($j=0;$j<sizeof($rows2);$j++){
-			echo "     document.getElementById('cargo".$rows2[$j]['id']."').checked=true;"."\n";
+			echo "     document.getElementById('cargo".$rows2[$j]['idCargo']."').checked=true;"."\n";
 		}
-		echo "var cargos = ".$cargos;
+		echo "     var cargos = ".$cargos;
 		echo "    </script>"."\n";
 	}
 }
