@@ -141,7 +141,11 @@ function Agendamento($ID){
 		$rows1=$result1->fetchAll();
 		$insc.="    <table class=\"table-striped border container\">"."\n";
 		$insc.="     <tr>"."\n";
-		$insc.="      <td class=\"border\" colspan=\"3\"><b>Nome: </b>".$_SESSION['PSS']['nome']."</td>"."\n";
+		$insc.="      <td class=\"border\" colspan=\"2\"><b>Nome: </b>".$_SESSION['PSS']['nome']."</td>"."\n";
+		$insc.="      <td class=\"border\" style=\"text-align:right\"><b>CPF: </b>".$_SESSION['PSS']['cpf']." &nbsp;&nbsp;<b>RG: </b>".$_SESSION['PSS']['rg']."</td>"."\n";
+		$insc.="     </tr>"."\n";
+		$insc.="     <tr>"."\n";
+		$insc.="      <td class=\"border\" colspan=\"3\">Você deverá comparecer ao local informado abaixo no dia e horário marcado conforme campo \"Data e Hora do Agendamento:\" portando todos os documentos listados abaixo:</td>"."\n";
 		$insc.="     </tr>"."\n";
 		$insc.="     <tr>"."\n";
 		$insc.="      <td class=\"border\" colspan=\"3\"><b>Local: Praça de Esportes, situada à Rua Sebastião Ramos, sem número - Bairro Grão Pará, Teófilo Otoni/MG</b></td>"."\n";
@@ -164,9 +168,9 @@ function Agendamento($ID){
 			$SQL2="SELECT * FROM inscricao WHERE idCargo=".$rows1[$i]['idCargo'];
 			if($result2=$PDO->query($SQL2)){
 				$rows2=$result2->fetchAll();
-				$insc.="      <td class=\"border\"><b>Inscrição: </b>".$rows1[$i]['id']."</td>"."\n";
-				$insc.="      <td class=\"border\"><b>Data: </b>".getData($rows1[$i]['datahora'])."</td>"."\n";
-				$insc.="      <td class=\"border\"><b>hora: </b>".getHora($rows1[$i]['datahora'])."</td>"."\n";
+				$insc.="      <td class=\"border\"><b>Inscrição: </b>".$rows1[$i]['id']." </td>"."\n";
+				$insc.="      <td class=\"border\" style=\"text-align:center\"><b>Data e Hora da Inscrição: </b>".getDataHora($rows1[$i]['timestamp'])."</td>"."\n";
+				$insc.="      <td class=\"border\" style=\"text-align:right\"><b>Data e Hora do Agendamento: </b>".getDataHora($rows1[$i]['datahora'])."</td>"."\n";
 				$insc.="     </tr>"."\n";
 				$SQL3="SELECT * FROM cargo WHERE id=".$rows2[0]['idCargo'];
 				if($result3=$PDO->query($SQL3)){
