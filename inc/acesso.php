@@ -20,7 +20,7 @@
 				if($RES2 = $PDO->query($SQL2)){
 					sendMail($ROW[0]['email'],"[e-PSS] Serviço de Troca de Senha",$body);
 					header('location: /?MSG='.urlencode("Dados de Troca de Senha enviados para o e-mail."));
-				}else	header('location: /?MSG='.urlencode("Erro ao enviar e-mail"));
+				}else	header('location: /?MSG='.urlencode("Usuário não cadastrado."));
 		}else	header('location: /?MSG='.urlencode("Usuário ou senha inválidos"));
 	}
 ?>
