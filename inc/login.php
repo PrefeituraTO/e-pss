@@ -4,7 +4,7 @@
 		
 	$PDO=conecta();
 	if($_POST['CPF'] && $_POST['password']){
-		$SQL="SELECT id, nome, cpf, email, senha FROM pessoa WHERE cpf='".$_POST['CPF']."' AND senha='".getPASS($_POST['password'])."'";
+		$SQL="SELECT id, nome, cpf,rg, email, senha FROM pessoa WHERE cpf='".$_POST['CPF']."' AND senha='".getPASS($_POST['password'])."'";
 		if($RES = $PDO->query($SQL)){
 			$ROW = $RES->fetchAll();
 				if(($ROW[0]['cpf']!=$_POST['CPF'])||($ROW[0]['senha']!=getPASS($_POST['password']))){
