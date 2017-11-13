@@ -17,8 +17,12 @@
 		$RES2=$PDO->query($SQL2);
 	}
 
+<<<<<<< HEAD
+	for($i=0;$i<=$quant;$i++){
+=======
 	for($i=1;$i<=$quant;$i++){
 		echo $i."\n";
+>>>>>>> 8fc40b3f8e12414f6caf44a058c2e795a1615ef0
 		$tmpCargo='cargo'.$i;
 		if(!empty($$tmpCargo)){
 			$SQL="INSERT INTO inscricao (datahora,idCargo,idPessoa) VALUES ('".$DATA."',".$$tmpCargo.",".$_SESSION['PSS']['id'].")";
